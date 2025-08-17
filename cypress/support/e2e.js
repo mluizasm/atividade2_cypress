@@ -15,6 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import './pages/login.page'
-import './pages/home.page'
-import './pages/cadastro.page'
+import './pages/Cadastro/cadastroSucesso.page'
+import './pages/Cadastro/cadastroErro.page'
+import './pages/Compartilhado/compartilhado.page'
+import './pages/Editar/editar.page'
+import './pages/Excluir/excluir.page'

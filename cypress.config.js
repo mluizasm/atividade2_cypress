@@ -7,7 +7,7 @@ module.exports = defineConfig({
     viewportHeight: 1080,
     watchForFileChanges: false,
     specPattern: "cypress/e2e/**/*.feature",
-    baseUrl: "http://www.automationpractice.pl/",
+    baseUrl: "https://demoqa.com/webtables",
     setupNodeEvents(on, config) {
       const cucumber = require("cypress-cucumber-preprocessor").default;
       on("file:preprocessor", cucumber());

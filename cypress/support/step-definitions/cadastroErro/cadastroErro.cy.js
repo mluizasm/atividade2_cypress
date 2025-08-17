@@ -1,62 +1,116 @@
+import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 
+let quantidadeAntes;
 
-import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-
-Given('que o usuário se encontra na página de criação de conta', () => {
-    cy.visit('/index.php?controller=authentication&back=my-account');
+Given('que o usuário acessa a página de Web Tables', () => {
+  cy.acessarPagina();
+  cy.verificarTabelaInicial()
 });
 
-And('o usuário preenche com um e-mail válido', () => {
-    cy.preencherEmailCadastro();
+And('clica no botão Add', () => {
+  cy.clicarIniciarCadastro();
 });
 
-And('clica em Create an account', () => {
-    cy.clicarCriarConta();
+When('não preenche nenhum campo obrigatório', () => {
+  cy.cenarioCamposVazios();
 });
 
-When('deixa todos os campos obrigatórios vazios', () => {
-    cy.cadastroCamposVazios();
-    cy.clicarRegistrar();
+When('não preenche apenas o campo obrigatório de e-mail', () => {
+  cy.cenarioEmailVazio();
 });
 
-Then('visualizo uma mensagem de erro no cadastro', () => {
-    cy.mostrarErroCadastro();
+When('não preenche apenas o campo obrigatório de nome', () => {
+  cy.cenarioNomeVazio();
+});
+
+When('não preenche apenas o campo obrigatório de sobrenome', () => {
+  cy.cenarioSobrenomeVazio();
+});
+
+When('não preenche apenas o campo obrigatório de idade', () => {
+  cy.cenarioIdadeVazio();
+});
+
+When('não preenche apenas o campo obrigatório de salário', () => {
+  cy.cenarioSalarioVazio();
+});
+
+When('não preenche apenas o campo obrigatório de departamento', () => {
+  cy.cenarioDepartamentoVazio();
 });
 
 
-When('deixa o campo obrigatório de nome vazio', () => {
-    cy.cadastroComNomeVazio();
+And('submete o formulário', () => {
+  cy.clicarSubmeter();
 });
 
-And('preenche o restante corretamente', () => {
-    cy.clicarRegistrar();
+Then('os campos devem ficar vermelhos', () => {
+  cy.validarAvisoErroTodosOsCampos()
 });
 
-Then('visualizo uma mensagem de erro no cadastro', () => {
-    cy.mostrarErroCadastro();
+Then('o campo de e-mail deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoEmail()
 });
 
-When('deixa o campo obrigatório de sobrenome vazio', () => {
-    cy.cadastroComSobrenomeVazio();
+Then('o campo de nome deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoNome()
 });
 
-And('preenche o restante corretamente', () => {
-    cy.clicarRegistrar();
+Then('o campo de sobrenome deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoSobrenome()
 });
 
-Then('visualizo uma mensagem de erro no cadastro', () => {
-    cy.mostrarErroCadastro();
+Then('o campo de idade deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoIdade()
 });
 
-When('deixa o campo obrigatório de senha vazio', () => {
-    cy.cadastroComSenhaVazia();
+Then('o campo de salário deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoSalario()
 });
 
-And('preenche o restante corretamente', () => {
-    cy.clicarRegistrar();
+Then('o campo de departamento deve ficar vermelho', () => {
+  cy.validarAvisoErroNoCampoDepartamento()
 });
 
-Then('visualizo uma mensagem de erro no cadastro', () => {
-    cy.mostrarErroCadastro();
+
+And('ao clicar em fechar o formulário de cadastro nenhuma atualização é feita na tabela', () => {
+  cy.validarTabelaNaoAtualizada()
 });
+
+
+// When('deixa o campo obrigatório de nome vazio', () => {
+//     cy.cadastroComNomeVazio();
+// });
+
+// And('preenche o restante corretamente', () => {
+//     cy.clicarRegistrar();
+// });
+
+// Then('visualizo uma mensagem de erro no cadastro', () => {
+//     cy.mostrarErroCadastro();
+// });
+
+// When('deixa o campo obrigatório de sobrenome vazio', () => {
+//     cy.cadastroComSobrenomeVazio();
+// });
+
+// And('preenche o restante corretamente', () => {
+//     cy.clicarRegistrar();
+// });
+
+// Then('visualizo uma mensagem de erro no cadastro', () => {
+//     cy.mostrarErroCadastro();
+// });
+
+// When('deixa o campo obrigatório de senha vazio', () => {
+//     cy.cadastroComSenhaVazia();
+// });
+
+// And('preenche o restante corretamente', () => {
+//     cy.clicarRegistrar();
+// });
+
+// Then('visualizo uma mensagem de erro no cadastro', () => {
+//     cy.mostrarErroCadastro();
+// });
 

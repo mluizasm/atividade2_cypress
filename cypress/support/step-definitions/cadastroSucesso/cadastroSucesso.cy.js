@@ -1,25 +1,23 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 
-Given('que o usuário se encontra na página de criação de conta', () => {
-    cy.visit('/index.php?controller=authentication&back=my-account');
+Given('que o usuário acessa a página de Web Tables', () => {
+  cy.acessarPagina();
 });
 
-And('o usuário preenche com um e-mail válido', () => {
-    cy.preencherEmailCadastro();
+And('clica no botão Add', () => {
+  cy.clicarIniciarCadastro();
 });
 
-And('clica em Create an account', () => {
-    cy.clicarCriarConta();
+When('preenche todos os campos obrigatórios com dados válidos', () => {
+  cy.cenarioSucessoPreencherTodosCampos();
 });
 
-When('o usuário preenche os campos obrigatórios com dados que são válidos', () => {
-    cy.preencherCamposObrigatorios();
+And('submete o formulário', () => {
+  cy.clicarSubmeter();
 });
 
-And('clica no botão Register', () => {
-    cy.clicarRegistrar();
+Then('os novos dados devem ser exibidos na tabela', () => {
+  cy.validarSucessoRegistroNaTabela();
 });
 
-Then('o sistema deve criar uma conta e redirecionar o usuário para a página inicial com login efetivado', () => {
-    cy.verificarCadastro();
-});
+

@@ -1,15 +1,15 @@
-#utf-8
-#language: pt
- 
-Funcionalidade: Cadastro de novo usuário
+# language: pt
+Funcionalidade: Cadastro de novo registro na tabela
 
-Cenário: Criar conta com dados válidos
+Cenário: Criar registro com dados válidos
 
-    Dado que o usuário se encontra na página de criação de conta
-    E o usuário preenche com um e-mail válido
-    E clica em Create an account
-    Quando o usuário preenche os campos obrigatórios com dados que são válidos
-    E clica no botão Register
-    Então o sistema deve criar uma conta e redirecionar o usuário para a página inicial com login efetivado
+Dado que o usuário acessa a página de Web Tables
+E clica no botão Add
+Quando preenche todos os campos obrigatórios com dados válidos
+E submete o formulário
+Então os novos dados devem ser exibidos na tabela
+
+
+
 
 
